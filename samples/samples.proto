@@ -1,5 +1,22 @@
 syntax="proto3";
 
-option go_package="";
+option go_package="github.com/MathPoem/proto/samples";
 
 package samples;
+
+message GetSampleRequest {
+  string id = 1;
+}
+
+message Sample {
+  string id = 1;
+  string karyotype = 2;
+}
+
+message GetSampleResponse {
+  repeated Sample samples = 1;
+}
+
+service SampleService {
+  rpc GetSample(GetSampleRequest) returns(GetSampleResponse);
+}
