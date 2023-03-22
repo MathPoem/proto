@@ -47,21 +47,19 @@ func (c *sampleServiceClient) GetSample(ctx context.Context, in *GetSampleReques
 }
 
 // SampleServiceServer is the server API for SampleService service.
-// All implementations must embed UnimplementedSampleServiceServer
+// All implementations should embed UnimplementedSampleServiceServer
 // for forward compatibility
 type SampleServiceServer interface {
 	GetSample(context.Context, *GetSampleRequest) (*GetSampleResponse, error)
-	mustEmbedUnimplementedSampleServiceServer()
 }
 
-// UnimplementedSampleServiceServer must be embedded to have forward compatible implementations.
+// UnimplementedSampleServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedSampleServiceServer struct {
 }
 
 func (UnimplementedSampleServiceServer) GetSample(context.Context, *GetSampleRequest) (*GetSampleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSample not implemented")
 }
-func (UnimplementedSampleServiceServer) mustEmbedUnimplementedSampleServiceServer() {}
 
 // UnsafeSampleServiceServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to SampleServiceServer will
